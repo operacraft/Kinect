@@ -465,11 +465,12 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
         Socket sending_socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram,
         ProtocolType.Udp);
         IPAddress send_to_address = IPAddress.Parse("127.0.0.1");
-        IPEndPoint sending_end_point = new IPEndPoint(send_to_address, 11000);
-        Console.WriteLine("Enter text to broadcast via UDP.");
+        IPEndPoint sending_end_point = new IPEndPoint(send_to_address, 7000);
+            sending_socket.Connect(sending_end_point);
+            Console.WriteLine("Enter text to broadcast via UDP.");
         Console.WriteLine("Enter a blank line to exit the program.");
         Console.WriteLine("Enter text to send, blank line to quit");
-                string text_to_send = "Hello !!";
+                string text_to_send = "Hello !!; \n";
                 byte[] send_buffer = Encoding.ASCII.GetBytes(text_to_send);
                 Console.WriteLine("sending to address: {0} port: {1}",
                 sending_end_point.Address,
